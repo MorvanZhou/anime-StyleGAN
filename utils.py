@@ -49,9 +49,8 @@ def save_gan(model, path):
         imgs = np.concatenate([imgs[:i * (n+1)], rest_imgs[i:i + 1], imgs[i * (n+1):]], axis=0)
     imgs = (imgs + 1) / 2
 
-    plt.clf()
     nc, nr = n+1, n+1
-    plt.figure(0, (nc*2, nr*2))
+    f = plt.figure(0, (nc*2, nr*2))
     for c in range(nc):
         for r in range(nr):
             i = r * nc + c
@@ -62,7 +61,8 @@ def save_gan(model, path):
     plt.tight_layout()
     os.makedirs(os.path.dirname(path), exist_ok=True)
     plt.savefig(path)
-    plt.clf()
+    f.clear()
+    plt.close(f)
 
 
 def get_logger(date_str):
