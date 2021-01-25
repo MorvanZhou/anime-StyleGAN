@@ -62,6 +62,7 @@ def save_gan(model, path):
     plt.tight_layout()
     os.makedirs(os.path.dirname(path), exist_ok=True)
     plt.savefig(path)
+    plt.clf()
 
 
 def get_logger(date_str):
